@@ -1,0 +1,25 @@
+{
+  "patterns": {
+    "employee_id": "\\bEMP-\\d{6}\\b",
+    "project_code": "\\bPROJ-[A-Z]{3}-\\d{4}\\b",
+    "internal_url": "\\bhttps?://internal\\.[a-z]+\\.[a-z]+",
+    "api_key": "\\bapi_[a-f0-9]{32}\\b"
+  },
+  "roles": {
+    "external_auditor": {
+      "allowed_entities": ["name", "email"],
+      "can_restore": false,
+      "description": "External auditor - limited access to personnel info"
+    },
+    "hr_manager": {
+      "allowed_entities": ["name", "email", "phone", "employee_id"],
+      "can_restore": true,
+      "description": "HR manager - access to employee information"
+    },
+    "security_analyst": {
+      "allowed_entities": ["name", "email", "phone", "ip_address", "employee_id", "api_key"],
+      "can_restore": true,
+      "description": "Security analyst - access to technical and personnel data"
+    }
+  }
+}
